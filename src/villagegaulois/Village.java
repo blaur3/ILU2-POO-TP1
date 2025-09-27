@@ -173,11 +173,27 @@ public class Village {
 	}		
 		public Etal rechercherEtal(Gaulois vendeur) {
 			for(Etal etal : marche.etals) {
-				if(etal.getVendeur().getNom()==vendeur.getNom());
+				if(etal.getVendeur().getNom()==vendeur.getNom())
 					return etal;
-				}
+			}
 			return null;
 		}	
 		
+		public String partirVendeur(Gaulois vendeur) {
+			for(Etal etal : marche.etals) {
+				if(etal.getVendeur().getNom() == vendeur.getNom()) {
+					return etal.libererEtal();
+				}
+				
+			}
+			return null;
+		}
+		
+		 public String afficherMarche() {
+			 StringBuilder chaine = new StringBuilder();
+			 chaine.append("Le marché du village " + this.getNom()+ " possède plusieurs étals :\n");
+			 chaine.append(marche.AfficherMarche());
+			 return chaine.toString();
+		 }
 		
 }
