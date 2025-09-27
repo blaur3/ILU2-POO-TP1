@@ -66,6 +66,18 @@ public class Village {
 			return null;
 		}
 		
+		private void AfficherMarche() {
+			int nbEtalsVides = 0;
+			for(Etal etal : etals) {
+				if(etal.isEtalOccupe())
+					etal.afficherEtal();
+				else
+					nbEtalsVides  ++;
+			}
+			if(nbEtalsVides !=0 )
+				System.out.print("Il reste " + nbEtalsVides + " étals non utilisés dans le marché. \n");
+		}
+		
 	
 	//fin classe interne Marche
 	}
