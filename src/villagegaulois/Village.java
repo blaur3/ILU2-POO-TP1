@@ -146,4 +146,30 @@ public class Village {
 		return chaine.toString();
 	}
 	
+	public String rechercherVendeursProduit(String produit) {
+		int nbVendeurs = 0;
+		StringBuilder chaine = new StringBuilder();
+		//compte du nombre de vendeurs qui vendent le produit
+		for(Etal etal : marche.etals) {
+			if(etal.contientProduit(produit))
+				nbVendeurs++;
+		}
+		//construction de la chaine de vendeurs qui vendent le produit
+		if(nbVendeurs==0) {
+			return (chaine.append("Il n'y a pas de vendeur qui propose des " + produit + " au marché.\n")).toString();
+		}
+		else {
+			for(Etal etal : marche.etals) {
+				if(etal.contientProduit(produit)) {
+					if(nbVendeurs ==1) {
+						return (chaine.append("Seul le vendeur " + etal.getVendeur().getNom() + " propose des " +produit+ " au marché.\n")).toString();
+					}
+					chaine.append("- "+ etal.getVendeur().getNom()+"\n");
+			}
+			}
+			chaine.insert(0, "Les vendeurs qui proposent des fleurs sont : \n" );
+			return chaine.toString();
+		}
+		
+	}	
 }
