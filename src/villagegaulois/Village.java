@@ -155,21 +155,29 @@ public class Village {
 				nbVendeurs++;
 		}
 		//construction de la chaine de vendeurs qui vendent le produit
-		if(nbVendeurs==0) {
+		if(nbVendeurs==0) {//cas 0 vendeur
 			return (chaine.append("Il n'y a pas de vendeur qui propose des " + produit + " au marché.\n")).toString();
 		}
 		else {
 			for(Etal etal : marche.etals) {
 				if(etal.contientProduit(produit)) {
-					if(nbVendeurs ==1) {
+					if(nbVendeurs ==1) {//cas 1 vendeur
 						return (chaine.append("Seul le vendeur " + etal.getVendeur().getNom() + " propose des " +produit+ " au marché.\n")).toString();
 					}
-					chaine.append("- "+ etal.getVendeur().getNom()+"\n");
+					chaine.append("- "+ etal.getVendeur().getNom()+"\n"); //cas plusieurs vendeurs
 			}
 			}
 			chaine.insert(0, "Les vendeurs qui proposent des fleurs sont : \n" );
 			return chaine.toString();
 		}
+	}		
+		public Etal rechercherEtal(Gaulois vendeur) {
+			for(Etal etal : marche.etals) {
+				if(etal.getVendeur().getNom()==vendeur.getNom());
+					return etal;
+				}
+			return null;
+		}	
 		
-	}	
+		
 }
