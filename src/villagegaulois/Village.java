@@ -20,7 +20,7 @@ public class Village {
 		private Marche(int nbEtals) {
 			etals = new Etal[nbEtals];
 			for(int i = 0; i< nbEtals; i++) {
-				this.etals[i] = new Etal();
+				etals[i] = new Etal();
 			}
 			
 		}
@@ -30,14 +30,44 @@ public class Village {
 		}
 		
 		private int trouverEtalLibre() {
-			for(int i =0; i<this.etals.length; i++) {
-				if (! this.etals[i].isEtalOccupe) {
-					return i;
-				}
-					
+			for(int i =0; i<etals.length; i++) {
+				if (!etals[i].isEtalOccupe())
+					return i;	
 			}
 			return -1;
 		}
+		
+		private Etal[] trouverEtal(String produit) {
+			//compte du nombre d'etals contenant le produit
+			int nbEtals = 0;
+			for(Etal etal : etals) {
+				if(etal.contientProduit(produit))
+					nbEtals++;
+			}
+			
+			Etal[] etalsProduit = new Etal[nbEtals];
+			
+			// ajouter des etals contenant le produit au tablea etalsProduit
+			int indiceEtalProduit = 0;
+			for(Etal etal : etals) {
+				if(etal.contientProduit(produit)) {
+					etalsProduit[indiceEtalProduit] = etal;
+					indiceEtalProduit++;
+				}
+			}
+			return etalsProduit;
+		}
+		
+		private Etal trouverVendeur(Gaulois gaulois) {
+			for(Etal etal : etals) {
+				if(etal.getVendeur() == gaulois)
+					return etal;
+			}
+			return null;
+		}
+		
+	
+	//fin classe interne Marche
 	}
 
 	public String getNom() {
