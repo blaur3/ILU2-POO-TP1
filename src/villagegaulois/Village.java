@@ -74,12 +74,12 @@ public class Village {
 			StringBuilder chaine = new StringBuilder();
 			for(Etal etal : etals) {
 				if(etal.isEtalOccupe())
-					etal.afficherEtal();
+					chaine.append(etal.afficherEtal());
 				else
 					nbEtalsVides  ++;
 			}
 			if(nbEtalsVides !=0 ) {
-				chaine.append("Il reste " + nbEtalsVides + " étals non utilisés dans le marché. \n");
+				chaine.append("\nIl reste " + nbEtalsVides + " étals non utilisés dans le marché. \n");
 				return chaine.toString();
 			}
 			return null;
