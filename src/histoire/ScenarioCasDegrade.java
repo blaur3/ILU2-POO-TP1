@@ -1,7 +1,7 @@
 package histoire;
 import personnages.Chef;
 import personnages.Gaulois;
-import villagegaulois.Village;
+import villagegaulois.Village;import villagegaulois.VillageSansChefException;
 import villagegaulois.Etal;
 
 public class ScenarioCasDegrade {
@@ -9,7 +9,7 @@ public class ScenarioCasDegrade {
 		Village village = new Village("le village des irréductibles", 10, 5);
 		Gaulois bonemine = new Gaulois("Bonemine", 7);
 		Chef abraracourcix = new Chef("Abraracourcix", 10, village);
-		
+		Village villageSansChef = new Village("village Sans Chef", 10, 5);
 		Etal etal = new Etal();
 		village.ajouterHabitant(bonemine);
 		village.ajouterHabitant(abraracourcix);
@@ -52,11 +52,20 @@ public class ScenarioCasDegrade {
 			e.printStackTrace();
 		}
 		System.out.println("[FIN] Test : quantite d'achat <1\n");
-		System.out.println("Fin du test"); 
+		 
+		
+		
+		//test quantite positive
+		System.out.println("***Test : village sans chef******");
+		try{villageSansChef.afficherVillageois();
 		
 		}
-	
-
-	
-	
+		catch (VillageSansChefException e) {
+			e.printStackTrace();
+		}
+		System.out.println("[FIN] Test : village sans chef\n");
+		
+		
+		System.out.println("******Fin des tests******");
+}
 }
